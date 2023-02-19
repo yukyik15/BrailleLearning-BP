@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Home</title>
+        <link href="home.css" rel="stylesheet" type="text/css" />
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1 id="title">BrailleLearning</h1>
+        <button id="buttoon">Word generator</button>
+        <script >console.log("hi");
+            let button2 = document.getElementById("buttoon")
+            button2.onclick = function (){
+                //let word = "hello";
+                let words =["apple", "orange", "banana", "strawberry", "pineapple", "cherry", "blueberry", "watermellon"];
+
+                let index = Math.floor(Math.random()*words.length);
+                let word = words[index];
+                console.log(word);
+                //let audio = new Audio('welcome.mp3');
+                //audio.play();
+                let data = {
+                    "word": word
+                }
+                let room_url = "http://127.0.0.1:5000/button"
+            
+                fetch(room_url, {
+                    "method":"POST",
+                    "mode":"cors",
+                    "headers": {"Content-Type": "application/json"},
+                    "body": JSON.stringify(data),
+                })
+            
+            
+            }
+            </script>
+    </body>
+</html>
